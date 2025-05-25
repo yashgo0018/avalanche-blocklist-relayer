@@ -1,5 +1,5 @@
 const TARGET_URL =
-  "http://127.0.0.1:9658/ext/bc/Y4YhS8jdyG6CYDcDiY3GPXWMkzT9mddYCwFhvv7bE5z6Rb8Lj/rpc";
+  "http://127.0.0.1:9650/ext/bc/PG2kCEBpLpxVCway9hKyNkCeQAbgFBgSvpNBG3z9Ut2uimemk/rpc";
 
 Bun.serve({
   port: 3005,
@@ -44,6 +44,8 @@ Bun.serve({
       // Add CORS headers to the actual response
       const responseHeaders = new Headers(response.headers);
       responseHeaders.set("Access-Control-Allow-Origin", "*"); // Allow any origin
+
+      responseHeaders.delete("content-encoding");
 
       return new Response(response.body, {
         status: response.status,
